@@ -2,7 +2,7 @@
     <div>
         <div class="login-page bg-gradient-to-t from-purple-500 to-pink-500">
             <div class="login-content">
-                <img class="mb-3" src="/img/KT_Logo.e8cae347.png">
+                <img class="mb-3" src="../../assets/KT_Logo.png">
                 <h3 class="mb-4 title">Войти Kt-Pro</h3>
 
                 <form class="form" @submit.prevent="submitHandler">
