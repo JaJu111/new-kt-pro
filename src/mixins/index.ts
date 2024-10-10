@@ -22,3 +22,13 @@ export interface ChartHeader {
     title: string
     link?: string
 }
+
+export interface Products {
+    id: number
+    title: string
+    img: string
+    category: string
+    quantity: number
+    amount: number
+    status: string
+}

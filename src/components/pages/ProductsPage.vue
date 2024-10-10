@@ -1,22 +1,75 @@
 <template>
     <div>
         <h1 class="text-4xl font-medium text-black mb-10">{{ $t('products.title') }}</h1>
+
+        <div class="table-box">
+            <table 
+                v-if="productsArr.length"
+                class="table table-hover products-table rounded bg-[#fff]"
+            >
+                <thead>
+                    <tr>
+                        <th>Фото</th>
+                        <th>Название</th>
+                        <th>Категория</th>
+                        <th>Количество</th>
+                        <th>Цена</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr 
+                        v-for="item in productsArr" 
+                        :key="item.id"
+                    >
+                        <td>
+                            <img class="products-img" :src="item.img">
+                        </td>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.category }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ format(item.amount / 100) }}</td>
+                        <td>{{ getStatus(item.status) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Vue, Component, Mixins } from "vue-property-decorator";
+import ProductsMixin from '@/mixins/products';
 
-export default {
-    
+@Component
+export default class ProductsPage extends Mixins(
+    ProductsMixin
+) {
+    getStatus(status: string): string {
+        switch(status) {
+            case 'ACTIVE':
+                return 'Активный';
+            case 'NOT_ACTIVE':
+                return 'Не активный';
+        }
+    }
+
+    format(v: number): string {
+        let value = Number(v).toLocaleString('ru').replace(',', '.');
+
+        let [ mainValue, subValue ] = value.split('.');
+
+        subValue = subValue || '';
+
+        return `$${mainValue + subValue}`;
+    }
 }
 
 </script>
 
 <style lang="sass" scoped>
-
-@media (max-width: 1024px)
-    .title
-        font-size: 20px
-        margin-bottom: 20px
+    
+@import ../../style/pages/products
 
 </style>
