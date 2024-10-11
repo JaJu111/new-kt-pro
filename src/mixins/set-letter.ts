@@ -6,7 +6,7 @@ export default class SetLetter extends Vue {
     USER: KtProUser = JSON.parse(sessionStorage.getItem('user')) || {};
     
     setLetter(): string {
-        let letter = this.USER.name.slice(0, 1).toUpperCase();
+        let letter = this.USER.login.slice(0, 1).toUpperCase();
 
         return letter;
     }

@@ -51,11 +51,11 @@ export default class LoginPage extends Vue {
 
     submitHandler() {
         let user = {
-            name: this.userName,
+            login: this.userName,
             password: this.userPassword
         }
 
-        if (!user.name) {
+        if (!user.login) {
             this.errorName = true;
         } else {
             this.errorName = false;
@@ -67,7 +67,7 @@ export default class LoginPage extends Vue {
             this.errorPassword = false;
         }
 
-        if (user.name && user.password) {
+        if (user.login && user.password) {
             this.$router.push({
                 name: 'home',
                 params: {
@@ -76,8 +76,6 @@ export default class LoginPage extends Vue {
             });
 
             sessionStorage.setItem('user', JSON.stringify(user));
-
-            console.log(user);
 
             this.userName = this.userPassword = '';
         }

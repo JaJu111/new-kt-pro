@@ -61,7 +61,7 @@
                             <div class="user-img-box">
                                 <span>{{ setLetter() }}</span>
                             </div>
-                            <h1 v-if="!hideAside" class="user-title">{{ truncateText(USER.name) }}</h1>
+                            <h1 v-if="!hideAside" class="user-title">{{ truncateText(USER.login) }}</h1>
                         </div>
 
                         <div :class="['line', {'hide': hideAside}]">

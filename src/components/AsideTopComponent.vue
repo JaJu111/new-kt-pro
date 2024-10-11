@@ -55,7 +55,7 @@
                     <div class="user-img-box">
                         <span>{{ setLetter() }}</span>
                     </div>
-                    <h1 class="user-title">{{ truncateText(USER.name) }}</h1>
+                    <h1 class="user-title">{{ truncateText(USER.login) }}</h1>
                 </div>
 
                 <div class="line"></div>

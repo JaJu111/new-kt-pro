@@ -1,4 +1,4 @@
 export interface KtProUser {
-    name: string
+    login: string
     password: string
 }

@@ -111,8 +111,6 @@ export default class RegisterPage extends Vue {
 
             sessionStorage.setItem('user', JSON.stringify(user));
 
-            console.log(user);
-
             this.userName = this.userPassword = this.userFirstName = this.userLogin = '';
         }
     }
