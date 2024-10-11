@@ -26,7 +26,7 @@
             <router-link to="/products">
                 <li 
                     class="pb-1 from-pink-400 rounded"
-                    :class="{'bg-gradient-to-r text-black text-2xl pl-2': $route.path === '/products'}"
+                    :class="{'bg-gradient-to-r text-black text-2xl pl-2': $route.path === '/products' || $route.path === '/products/info'}"
                 >
                     {{ $t('products.title') }}
                 </li>

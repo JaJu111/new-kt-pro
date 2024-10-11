@@ -30,7 +30,7 @@
                     <router-link to="/products">
                         <li 
                             class="hover:bg-gradient-to-r from-pink-400 rounded-md" 
-                            :class="{'bg-gradient-to-r text-black': $route.path === '/products'}"
+                            :class="{'bg-gradient-to-r text-black': $route.path === '/products' || $route.path === '/products/info'}"
                         >
                             <i class="fa-solid fa-cart-shopping"></i> <span v-if="!hideAside">{{ $t('products.title') }}</span>
                         </li>

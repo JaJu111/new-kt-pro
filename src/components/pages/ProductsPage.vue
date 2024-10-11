@@ -22,6 +22,7 @@
                     <tr 
                         v-for="item in productsArr" 
                         :key="item.id"
+                        @click="getProductsInfo(item)"
                     >
                         <td>
                             <img class="products-img" :src="item.img">
@@ -39,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Mixins } from "vue-property-decorator";
+import { Component, Mixins } from "vue-property-decorator";
 import ProductsMixin from '@/mixins/products';
 
 @Component
@@ -63,6 +64,17 @@ export default class ProductsPage extends Mixins(
         subValue = subValue || '';
 
         return `$${mainValue + subValue}`;
+    }
+
+    getProductsInfo(item: ProductsMixin): void {
+        sessionStorage.setItem('productsInfo', JSON.stringify(item));
+            
+        this.$router.push({
+            name: 'products-info',
+            params: {
+                path: '/products/info'
+            }
+        })
     }
 }
 

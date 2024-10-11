@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import HomeComponent from '@/views/HomeView.vue';
 import HomePage from '@/components/pages/HomePage.vue';
 import ProductsPage from '@/components/pages/ProductsPage.vue';
+import ProductsInfoPage from '@/components/pages/ProductsInfoPage.vue';
 import CategoriesPage from '@/components/pages/CategoriesPage.vue';
 import SalesPage from '@/components/pages/SalesPage.vue';
 
@@ -27,6 +28,11 @@ const routes = [
                 path: '/products',
                 name: 'products',
                 component: ProductsPage 
+            },
+            {
+                path: '/products/info',
+                name: 'products-info',
+                component: ProductsInfoPage,
             },
             {
                 path: '/categories',

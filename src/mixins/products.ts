@@ -93,7 +93,7 @@ export default class ProductsMixin extends Vue {
             category: 'Автозвук',
             quantity: 55,
             amount: 6000,
-            status: 'ACTIVE',
+            status: 'NOT_ACTIVE',
         }
     ]
 
