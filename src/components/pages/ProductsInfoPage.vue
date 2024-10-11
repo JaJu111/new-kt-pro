@@ -226,7 +226,13 @@ export default class ProductsInfoPage extends Vue {
 
 @media (max-width: 460px)
     .products-info
-        margin-bottom: 20px
+        margin-bottom: 26px
+
+    .products-info-box
+        padding: 24px
+
+    .products-title
+        margin-bottom: 12px
 
 
 </style>
