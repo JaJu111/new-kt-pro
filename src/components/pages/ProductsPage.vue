@@ -1,40 +1,46 @@
 <template>
     <div>
-        <h1 class="text-4xl font-medium text-black mb-10">{{ $t('products.title') }}</h1>
+        <LoaderComponent 
+            :loading="pageLoading"
+        />
 
-        <div class="table-box">
-            <table 
-                v-if="productsArr.length"
-                class="table table-hover products-table rounded bg-[#fff]"
-            >
-                <thead>
-                    <tr>
-                        <th>Фото</th>
-                        <th>Название</th>
-                        <th>Категория</th>
-                        <th>Количество</th>
-                        <th>Цена</th>
-                        <th>Статус</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    <tr 
-                        v-for="item in productsArr" 
-                        :key="item.id"
-                        @click="getProductsInfo(item)"
-                    >
-                        <td>
-                            <img class="products-img" :src="item.img">
-                        </td>
-                        <td>{{ item.title }}</td>
-                        <td>{{ item.category }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ format(item.amount / 100) }}</td>
-                        <td>{{ getStatus(item.status) }}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div v-if="!pageLoading">
+            <h1 class="text-4xl font-medium text-black mb-10">{{ $t('products.title') }}</h1>
+
+            <div class="table-box">
+                <table 
+                    v-if="productsArr.length"
+                    class="table table-hover products-table rounded bg-[#fff]"
+                >
+                    <thead>
+                        <tr>
+                            <th>Фото</th>
+                            <th>Название</th>
+                            <th>Категория</th>
+                            <th>Количество</th>
+                            <th>Цена</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr 
+                            v-for="item in productsArr" 
+                            :key="item.id"
+                            @click="getProductsInfo(item)"
+                        >
+                            <td>
+                                <img class="products-img" :src="item.img">
+                            </td>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.category }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ format(item.amount / 100) }}</td>
+                            <td>{{ getStatus(item.status) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </template>
@@ -42,8 +48,13 @@
 <script lang="ts">
 import { Component, Mixins } from "vue-property-decorator";
 import ProductsMixin from '@/mixins/products';
+import LoaderComponent from '@/components/LoaderComponent.vue';
 
-@Component
+@Component({
+	components: {
+		LoaderComponent
+	}
+})
 export default class ProductsPage extends Mixins(
     ProductsMixin
 ) {

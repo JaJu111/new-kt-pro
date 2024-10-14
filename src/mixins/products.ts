@@ -4,6 +4,16 @@ import { Products } from '@/mixins/index';
 @Component
 export default class ProductsMixin extends Vue {
 
+    pageLoading: boolean = false;
+
+    created() {
+		this.pageLoading = true;
+
+        setTimeout(() => {
+            this.pageLoading = false;
+        }, 1000);
+	}
+    
     productsArr: Products[] = [
         {
             id: 1,

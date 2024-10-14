@@ -1,13 +1,19 @@
 <template>
     <div>
-        <h1 class="text-4xl font-medium text-black mb-10">{{ $t('categories.title') }}</h1>
-
-        <CategoryComponent
-            v-for="item in categories"
-            :key="item.id"
-            :item="item"
-            @click="categoryOpen"
+        <LoaderComponent 
+            :loading="pageLoading"
         />
+
+        <div v-if="!pageLoading">
+            <h1 class="text-4xl font-medium text-black mb-10">{{ $t('categories.title') }}</h1>
+
+            <CategoryComponent
+                v-for="item in categories"
+                :key="item.id"
+                :item="item"
+                @click="categoryOpen"
+            />
+        </div>
     </div>
 </template>
 
@@ -16,10 +22,12 @@ import { Component, Mixins } from "vue-property-decorator";
 import CategoriesMixin from '@/mixins/categories';
 import CategoryComponent from '@/components/CategoryComponent.vue';
 import { Categories } from "@/mixins";
+import LoaderComponent from '@/components/LoaderComponent.vue';
 
 @Component({
 	components: {
-		CategoryComponent
+		CategoryComponent,
+        LoaderComponent
 	}
 })
 

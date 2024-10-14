@@ -4,6 +4,16 @@ import { Categories } from '@/mixins/index';
 @Component
 export default class CategoriesMixin extends Vue {
 
+    pageLoading: boolean = false;
+
+    created() {
+		this.pageLoading = true;
+
+        setTimeout(() => {
+            this.pageLoading = false;
+        }, 1000);
+	}
+
 	categories: Categories[] = [
         {
             id: 1,

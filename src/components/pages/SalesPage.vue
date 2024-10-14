@@ -1,19 +1,25 @@
 <template>
     <div>
-        <div class="search-content flex justify-between mb-10 items-center">
-            <h1 class="text-4xl font-medium text-black">{{ $t('sales.title') }}</h1>
-
-            <div class="search-box">
-                <input v-model.trim="searchBySales" type="text" placeholder="Поиск по продажам">
-
-                <i class="fa-solid fa-magnifying-glass left-icon"></i>
-                <i v-if="searchBySales.length" class="fa-solid fa-xmark right-icon" @click="searchBySales = ''"></i>
-            </div>
-        </div>
-
-        <TableComponent 
-            :salesArr="filterSalesArr"
+        <LoaderComponent 
+            :loading="pageLoading"
         />
+
+        <div v-if="!pageLoading">
+            <div class="search-content flex justify-between mb-10 items-center">
+                <h1 class="text-4xl font-medium text-black">{{ $t('sales.title') }}</h1>
+
+                <div class="search-box">
+                    <input v-model.trim="searchBySales" type="text" placeholder="Поиск по продажам">
+
+                    <i class="fa-solid fa-magnifying-glass left-icon"></i>
+                    <i v-if="searchBySales.length" class="fa-solid fa-xmark right-icon" @click="searchBySales = ''"></i>
+                </div>
+            </div>
+
+            <TableComponent 
+                :salesArr="filterSalesArr"
+            />
+        </div>
     </div>
 </template>
 
@@ -21,10 +27,12 @@
 import { Mixins, Component } from "vue-property-decorator";
 import TableComponent from '@/components/TableComponent.vue';
 import SalesPageMixin from '@/mixins/sales-page/sales-mixin';
+import LoaderComponent from '@/components/LoaderComponent.vue';
 
 @Component({
 	components: {
-        TableComponent
+        TableComponent,
+        LoaderComponent
 	}
 })
 

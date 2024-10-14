@@ -7,6 +7,15 @@ export default class SalesPageMixin extends Mixins(
 ) {
     searchBySales: string = '';
     filterArr: any[] = [];
+    pageLoading: boolean = false;
+
+    created() {
+		this.pageLoading = true;
+
+        setTimeout(() => {
+            this.pageLoading = false;
+        }, 1000);
+	}
 
     get filterSalesArr() {
         if (this.$route.path === '/home') {
